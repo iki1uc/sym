@@ -1,44 +1,66 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<title>SYM · WHIRL · SQRT · NC.math</title>
+
+<style>
+body { background:#000; color:#0f0; font-family:monospace; padding:40px; }
+h1 { color:#6cf; }
+pre { background:#111; padding:20px; border-left:3px solid #6cf; }
+</style>
+
 <script src="sym.sym"></script>
+<script src="NC.math"></script>
+<script src="sqrt.room"></script>
+<script src="API.room"></script>
+<script src="X.room.CORE"></script>
+<script src="SYSTEM.me"></script>
+<script src="ROOT.me"></script>
+
+</head>
+<body>
+
+<h1>SYM · System‑Scan & WHIRL‑Neustart</h1>
+<pre id="sys"></pre>
 
 <script>
 (async function () {
 
+    // Dateien, die wirklich existieren und relevant sind
     const files = [
         "API.room",
-        "API (1).room",
         "new.room",
         "sqrt.room",
-        "sqrt (1).room",
         "sym.sym",
-        "tmp.sym",
-        "9.html",
         "9×9‑Operator.me",
-        "BEN.tmp",
         "BEN‑NC3×3.room",
         "BEN‑NC6eT6D.room",
         "BEN‑NC9×9.room",
-        "C.tmp",
-        "DA.tmp",
         "NC.math",
-        "NE.tmp",
         "ROOT.me",
         "SOURCE.me",
         "SYSTEM.me",
         "X.room.CORE",
         "X.room.IN",
         "X.room.OUT",
-        "X.tmp",
-        "Z.tmp",
-        "ghost.html",
-        "verify.html",
-        "verify.T.html"
+        "ghost.html"
     ];
 
+    // SYM Level‑1 Scan
     const scan = SYM.scan(files);
+
+    // Reparatur
     const repaired = SYM.repair(scan);
+
+    // Log
     const log = SYM.log(repaired);
 
+    // Ausgabe
     document.getElementById("sys").innerText = log;
 
 })();
 </script>
+
+</body>
+</html>
