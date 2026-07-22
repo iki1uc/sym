@@ -2,7 +2,7 @@
 <html lang="de">
 <head>
 <meta charset="UTF-8">
-<title>SYM · WHIRL · SQRT · NC.math</title>
+<title>SYM · WHIRL · SQRT · NC.math · iki1uc-SYSTEM</title>
 
 <style>
 body { background:#000; color:#0f0; font-family:monospace; padding:40px; }
@@ -15,17 +15,23 @@ pre { background:#111; padding:20px; border-left:3px solid #6cf; }
 <script src="sqrt.room"></script>
 <script src="NC.math"></script>
 <script src="API.room"></script>
+<script src="X.room.IN"></script>
 <script src="X.room.CORE"></script>
+<script src="X.room.OUT"></script>
 <script src="SYSTEM.me"></script>
 <script src="ROOT.me"></script>
+<script src="SOURCE.me"></script>
 
-<!-- Ghost als Symbol-Layer -->
+<!-- Ghost-Layer -->
 <script>
 window.GHOST = {
     active: true,
     symbol: "SYM/BOL",
     info() {
         return "Ghost-Layer aktiv · Symbol bereit";
+    },
+    ping() {
+        return "GHOST-PING · OK";
     }
 };
 </script>
@@ -33,28 +39,28 @@ window.GHOST = {
 </head>
 <body>
 
-<h1>SYM · System-Scan & WHIRL-Neustart</h1>
+<h1>SYM · System-Scan · WHIRL-Neustart · iki1uc-SYSTEM</h1>
 <pre id="sys"></pre>
 
 <script>
 (async function () {
 
-    // Nur Dateien, die wirklich existieren und relevant sind
+    // Vollständige Datei-Liste
     const files = [
         "API.room",
         "new.room",
         "sqrt.room",
         "sym.sym",
-        "9×9‑Operator.me",
-        "BEN‑NC3×3.room",
-        "BEN‑NC6eT6D.room",
-        "BEN‑NC9×9.room",
+        "9.html",
+        "BEN-NC3×3.room",
+        "BEN-NC6eT6D.room",
+        "BEN-NC9×9.room",
         "NC.math",
         "ROOT.me",
         "SOURCE.me",
         "SYSTEM.me",
-        "X.room.CORE",
         "X.room.IN",
+        "X.room.CORE",
         "X.room.OUT",
         "ghost.html"
     ];
@@ -62,15 +68,35 @@ window.GHOST = {
     // SYM Level‑1 Scan
     const scan = SYM.scan(files);
 
-    // Reparatur
-    const repaired = SYM.repair(scan);
+    // WHIRL – Neustart
+    const whirl = SYM.whirl(scan);
 
-    // Log
-    const log = SYM.log(repaired);
+    // SQRT – mathematische Prüfung
+    const sqrtCheck = SQRT.check(whirl);
+
+    // NC – Matrix-Validierung
+    const ncCheck = NC.validate();
+
+    // SYSTEM – Kernprüfung
+    const sysCheck = SYSTEM.verify();
+
+    // ROOT – Verankerung
+    const rootCheck = ROOT.anchor();
+
+    // LOG – Zusammenfassung
+    const log = SYM.log({
+        scan,
+        whirl,
+        sqrtCheck,
+        ncCheck,
+        sysCheck,
+        rootCheck,
+        ghost: GHOST.info(),
+        ghostPing: GHOST.ping()
+    });
 
     // Ausgabe
-    document.getElementById("sys").innerText = 
-        log + "\n\nGhost-Layer: " + GHOST.info();
+    document.getElementById("sys").innerText = log;
 
 })();
 </script>
